@@ -32,6 +32,12 @@ function dashboard(bdata) {
     let choice = dropDown.property("value");
     demographic(metaData, choice);
 
+    // Get the samples
+    samples = Object.values(bdata.samples);
+    sample = samples.filter(sample => sample.id == choice); 
+    console.log(sample);
+    top10(sample);
+
     // Dynamically change the following based on the drop down selection
     dropDown.on("change", function() {
         let newChoice = dropDown.property("value");
@@ -42,7 +48,9 @@ function dashboard(bdata) {
         demographic(metaData, newChoice);
 
         // Call a function to display the plot of top 10 OTUs
-        // top10();
+        newSample = samples.filter(sample => sample.id == newChoice); 
+        console.log(newSample);
+        top10(newSample);
 
         // Call a function to display the bubble plot
         // plotBubble();
@@ -61,7 +69,7 @@ function buildOptions(items) {
     console.log(items.length);
 
     for (let i= 0; i < totalItems; i++) {
-        console.log(items[i]);
+        // console.log(items[i]);
         options = dropDown.append("option");
         options.attr("value", items[i]).text(items[i]);
     }; 
@@ -96,4 +104,33 @@ function demographic(mdata, mchoice) {
         meta.append("div").text(`${key}: ${value}`)
         console.log(`${key}: ${value}`)
     });
+};
+
+function top10(bbsample){
+    // Locate the bar graph elemement from the index.html
+    currentSample = bbsample[0];
+    console.log("currentSample");
+    console.log(currentSample);
+
+    let otuIds = Object.values(currentSample.otu_ids);
+    let sampleValues =  Object.values(currentSample.sample_values);
+    let otuLabels =  Object.values(currentSample.otu_labels);
+
+    let top10OtuIds = otuIds.slice(0,10).map(id => "OTU " + id).reverse();
+    let top10SampleValues = sampleValues.slice(0, 10).reverse();
+    let top10OtuLables = otuLabels.slice(0, 10).reverse();
+    console.log("top10OtuIds");
+    console.log(top10OtuIds);
+
+    trace = {
+        x: top10SampleValues,
+        y: top10OtuIds,
+        type: 'bar',
+        orientation: 'h'
+    }
+
+    data = [trace];
+
+    Plotly.newPlot("bar", data);
+
 };
