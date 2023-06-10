@@ -118,15 +118,18 @@ function top10(bbsample){
 
     let top10OtuIds = otuIds.slice(0,10).map(id => "OTU " + id).reverse();
     let top10SampleValues = sampleValues.slice(0, 10).reverse();
-    let top10OtuLables = otuLabels.slice(0, 10).reverse();
+    let top10OtuLables = otuLabels.slice(0, 10).reverse().map(item => item.replace(/;/g, '<br>'));
     console.log("top10OtuIds");
     console.log(top10OtuIds);
+    console.log(top10OtuLables);
 
     trace = {
         x: top10SampleValues,
         y: top10OtuIds,
+        text: top10OtuLables,
         type: 'bar',
-        orientation: 'h'
+        orientation: 'h',
+        hovertemplate: '%{text}'
     }
 
     data = [trace];
