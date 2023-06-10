@@ -38,7 +38,7 @@ function dashboard(bdata) {
     console.log(sample);
     top10(sample);
 
-    //plotBubble(sample);
+    plotBubble(sample);
     console.log("before plotGauge")
     plotGauge(sample);
 
