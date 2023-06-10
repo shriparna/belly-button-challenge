@@ -129,7 +129,7 @@ function top10(bbsample){
         text: top10OtuLables,
         type: 'bar',
         orientation: 'h',
-        hovertemplate: '%{text}'
+        hovertemplate: '%{text}<extra></extra>' //<extra> tag is used to remove trace0. Source: plotly.com
     }
 
     data = [trace];
