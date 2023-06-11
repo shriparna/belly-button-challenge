@@ -39,8 +39,6 @@ function dashboard(bdata) {
     top10(sample);
 
     plotBubble(sample);
-    console.log("before plotGauge")
-    plotGauge(sample);
 
     // Dynamically change the following based on the drop down selection
     dropDown.on("change", function() {
@@ -58,9 +56,6 @@ function dashboard(bdata) {
 
         // Call a function to display the bubble plot
         plotBubble(newSample);
-
-        // Call a function to display the gauge plot
-        plotGauge(newSample);    
     });
 };
 
@@ -107,6 +102,10 @@ function demographic(mdata, mchoice) {
         value = kvpair.value;
         meta.append("div").text(`${key}: ${value}`)
         console.log(`${key}: ${value}`)
+        if (key=="wfreq") {
+            // Plot the gauge (BONUS)
+            plotGauge(value);
+        }
     });
 };
 
@@ -143,32 +142,48 @@ function top10(bbsample){
 };
 
 function plotBubble(bbsample) {
-    currentSample = bbsample[0];
-    console.log("currentSample");
-    console.log(currentSample);
-
-    let otuIds = Object.values(currentSample.otu_ids);
-    let sampleValues =  Object.values(currentSample.sample_values);
-    let otuLabels =  Object.values(currentSample.otu_labels);
-
-    let top10OtuIds = otuIds.slice(0,10).map(id => "OTU " + id).reverse();
-    let top10SampleValues = sampleValues.slice(0, 10).reverse();
-    let top10OtuLables = otuLabels.slice(0, 10).reverse().map(item => item.replace(/;/g, '<br>'));
-    console.log("top10OtuIds");
-    console.log(top10OtuIds);
-    console.log(top10OtuLables);
-
-    trace = {
-        x: top10SampleValues,
-        y: top10OtuIds,
-        text: top10OtuLables,
-        type: 'bar',
-        orientation: 'h',
-        hovertemplate: '%{text}<extra></extra>' //<extra> tag is used to remove trace0. Source: plotly.com
-    }
-
-    data = [trace];
-
-    Plotly.newPlot("bubble", data);
+    var trace1 = {
+        x: [1, 2, 3, 4],
+        y: [10, 11, 12, 13],
+        mode: 'markers',
+        marker: {
+          color: ['hsl(0,100,40)', 'hsl(33,100,40)', 'hsl(66,100,40)', 'hsl(99,100,40)'],
+          size: [12, 22, 32, 42],
+          opacity: [0.6, 0.7, 0.8, 0.9]
+        },
+        type: 'scatter'
+    };
+      
+    var trace2 = {
+        x: [1, 2, 3, 4],
+        y: [11, 12, 13, 14],
+        mode: 'markers',
+        marker: {
+          color: 'rgb(31, 119, 180)',
+          size: 18,
+          symbol: ['circle', 'square', 'diamond', 'cross']
+        },
+        type: 'scatter'
+    };
+      
+    var trace3 = {
+        x: [1, 2, 3, 4],
+        y: [12, 13, 14, 15],
+        mode: 'markers',
+        marker: {
+          size: 18,
+          line: {
+            color: ['rgb(120,120,120)', 'rgb(120,120,120)', 'red', 'rgb(120,120,120)'],
+            width: [2, 2, 6, 2]
+          }
+        },
+        type: 'scatter'
+    };
+      
+    var data = [trace1, trace2, trace3];
+      
+    var layout = {showlegend: false};
+      
+    Plotly.newPlot('bubble', data, layout);
 
 };
