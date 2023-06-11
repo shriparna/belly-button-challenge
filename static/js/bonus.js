@@ -2,7 +2,7 @@
 function plotGauge(wfrequency) {
     // Source: https://plotly.com/javascript/gauge-charts/#basic-gauge 
     // Customized closed to the requirements
-    var data = [
+    var dataGauge = [
         {
           type: "indicator",
           mode: "gauge+number",
@@ -28,7 +28,7 @@ function plotGauge(wfrequency) {
         }
       ];
       
-      var layout = {
+      var layoutGauge = {
         width: 500,
         height: 400,
         margin: { t: 25, r: 25, l: 25, b: 25 },
@@ -36,5 +36,5 @@ function plotGauge(wfrequency) {
         font: { color: "darkblue", family: "Arial" }
       };
       
-      Plotly.newPlot('gauge', data, layout);
+      Plotly.newPlot('gauge', dataGauge, layoutGauge);
 };

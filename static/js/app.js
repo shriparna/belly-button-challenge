@@ -113,7 +113,10 @@ function top10AndBubble(bbsample){
 
     let otuIds = Object.values(currentSample.otu_ids);
     let sampleValues =  Object.values(currentSample.sample_values);
-    let otuLabels =  Object.values(currentSample.otu_labels).map(item => item.replace(/;/g, '<br>'));;
+    let otuLabels =  Object.values(currentSample.otu_labels).map(item => item.replace(/;/g, '<br>'));
+    console.log("otuLabels");
+    console.log(otuLabels);
+
 
     let top10OtuIds = otuIds.slice(0,10).map(id => "OTU " + id).reverse();
     let top10SampleValues = sampleValues.slice(0, 10).reverse();
