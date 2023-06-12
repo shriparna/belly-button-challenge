@@ -35,7 +35,7 @@ Package Contents:
     <img width="194" alt="Screenshot 2023-06-12 at 1 57 29 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/02530ef6-816f-40f8-9e65-0ab5b3bb0ac4">
 
 
-    b. Top ten OTUs
+    b. Top 10 BTUs plot
 
     <img width="410" alt="Screenshot 2023-06-12 at 1 57 36 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/7ae5a9de-67f2-4d3e-8cfa-ca023d996ce3">
 
@@ -50,7 +50,7 @@ Package Contents:
 
 
     e. Dashboard
-    
+
 <img width="591" alt="Screenshot 2023-06-12 at 1 58 45 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/bb32f4b6-c954-4234-8c0b-db01c1789544">
 
 <hr>
