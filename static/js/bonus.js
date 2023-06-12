@@ -16,7 +16,7 @@ function plotGauge(wfrequency) {
             bordercolor: "gray",
             steps: [
               { range: [0, 3], color: "lightgray" },
-              { range: [3,6], color: "yellow" },
+              { range: [3, 6], color: "yellow" },
               { range: [6, 9], color: "green" }
             ],
             threshold: {
@@ -36,5 +36,6 @@ function plotGauge(wfrequency) {
         font: { color: "darkblue", family: "Arial" }
       };
       
+      // Plot the gauge plot
       Plotly.newPlot('gauge', dataGauge, layoutGauge);
 };

@@ -16,7 +16,7 @@ d3.json(URL).then(function(bbdata){
     dashboard(bbdata);
 });
 
-// This function builds the options from the array
+// This function builds the dashboard
 function dashboard(bdata) {
 
     // Get the names
@@ -63,6 +63,7 @@ function buildOptions(items) {
     let totalItems = parseInt(items.length);
     console.log(items.length);
 
+    // Traverse through the items to append all the options to the dropdown
     for (let i= 0; i < totalItems; i++) {
         options = dropDown.append("option");
         options.attr("value", items[i]).text(items[i]);
@@ -74,29 +75,28 @@ function optionChanged(myChoice){
     return myChoice;
 }
 
-// This function populates the demographic data and plots the Gauge
+// This function populates the demographic data and plots the gauge plot
 function demographicAndGauge(mdata, mchoice) {
     console.log("Inside demographic");
     console.log(mdata);
-    let metaDetails;
 
     // Get the length of mdata
     totalMdata = parseInt(mdata.length);
     console.log(totalMdata, mchoice);
 
-    // Locate the metadata from the index.html to display the demographic details
-
     // Go through the data and grab the details of the id using filter
     dict = mdata.filter(element => element.id==mchoice)[0];
     console.log(dict);
 
-    // Traverse through the dict
+    // Locate sample-metadata from index.html
     meta = d3.select("#sample-metadata").text("");
+    // Traverse through the dict
     d3.entries(dict).forEach(function(kvpair){
         key = kvpair.key;
         value = kvpair.value;
         meta.append("div").text(`${key}: ${value}`)
         console.log(`${key}: ${value}`)
+        // Check if the key is wfreq to plot the gauge
         if (key=="wfreq") {
             // Plot the gauge (BONUS)
             plotGauge(value);
@@ -111,13 +111,16 @@ function top10AndBubble(bbsample){
     console.log("currentSample");
     console.log(currentSample);
 
+    // Get the values
     let otuIds = Object.values(currentSample.otu_ids);
     let sampleValues =  Object.values(currentSample.sample_values);
-    let otuLabels =  Object.values(currentSample.otu_labels).map(item => item.replace(/;/g, '<br>'));
+    // Print each lable on newline using ";" as separater
+    let otuLabels =  Object.values(currentSample.otu_labels).map(item => item.replace(/;/g, '<br>')); 
     console.log("otuLabels");
     console.log(otuLabels);
 
 
+    // Get top 10 and reverse the order
     let top10OtuIds = otuIds.slice(0,10).map(id => "OTU " + id).reverse();
     let top10SampleValues = sampleValues.slice(0, 10).reverse();
     let top10OtuLables = otuLabels.slice(0, 10).reverse();
@@ -136,6 +139,7 @@ function top10AndBubble(bbsample){
 
     var dataBar = [traceBar];
 
+    // Plot the bar plot
     Plotly.newPlot("bar", dataBar);
 
     var traceBubble = {
@@ -159,5 +163,6 @@ function top10AndBubble(bbsample){
             }
         };
       
+    // Plot the bubble plot
     Plotly.newPlot('bubble', dataBubble, layoutBubble);
 };
