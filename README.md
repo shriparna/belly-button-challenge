@@ -36,17 +36,21 @@ Package Contents:
 
 
     b. Top ten OTUs
+
     <img width="410" alt="Screenshot 2023-06-12 at 1 57 36 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/7ae5a9de-67f2-4d3e-8cfa-ca023d996ce3">
 
     c. Bubble plot
+
 <img width="967" alt="Screenshot 2023-06-12 at 1 57 57 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/871b46d6-c73c-48bb-91ff-ee8d910341f1">
 
     
     d. Gauge plot
+
 <img width="523" alt="Screenshot 2023-06-12 at 1 57 46 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/91a023bb-e711-482e-bc06-b5dbfa998745">
 
 
     e. Dashboard
+    
 <img width="591" alt="Screenshot 2023-06-12 at 1 58 45 PM" src="https://github.com/shriparna/belly-button-challenge/assets/71340748/bb32f4b6-c954-4234-8c0b-db01c1789544">
 
 <hr>
