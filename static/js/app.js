@@ -159,6 +159,5 @@ function top10AndBubble(bbsample){
             }
         };
       
-    bubblePlot = Plotly.newPlot('bubble', dataBubble, layoutBubble);
-    bubblePlot.update_layout({xaxis: "OTU ID"});
+    Plotly.newPlot('bubble', dataBubble, layoutBubble);
 };
