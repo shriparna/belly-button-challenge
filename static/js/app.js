@@ -153,8 +153,12 @@ function top10AndBubble(bbsample){
     var dataBubble = [traceBubble];
 
     var layoutBubble = {
-            showlegend: false
+            showlegend: false,
+            xaxis: {
+                title: "OTU ID"
+            }
         };
       
-    Plotly.newPlot('bubble', dataBubble, layoutBubble);
+    bubblePlot = Plotly.newPlot('bubble', dataBubble, layoutBubble);
+    bubblePlot.update_layout({xaxis: "OTU ID"});
 };
