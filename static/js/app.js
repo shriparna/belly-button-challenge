@@ -149,6 +149,7 @@ function top10AndBubble(bbsample){
             mode: 'markers',
             marker: {
                 color: otuIds,
+                colorscale: "Earth",
                 size: sampleValues
             },
             type: 'bubble'       
@@ -158,6 +159,8 @@ function top10AndBubble(bbsample){
 
     var layoutBubble = {
             showlegend: false,
+            height: 500,
+            width: 1000,
             xaxis: {
                 title: "OTU ID"
             }
